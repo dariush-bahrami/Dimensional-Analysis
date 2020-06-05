@@ -152,6 +152,7 @@ class DimensionalAnalysis:
 
     @property
     def dimension_matrix(self):
+        import sympy
         from sympy.physics.units.systems.si import dimsys_SI
         matrix = sympy.zeros(len(self.fundamental_dimensions),
                              len(self.parameters))
@@ -168,6 +169,7 @@ class DimensionalAnalysis:
 
     @property
     def dimensionless_parameters(self):
+        import sympy
         dimesionless_dict = dict()
         nullspace = self.dimension_matrix.nullspace()
         for i, vector in enumerate(nullspace):
@@ -194,6 +196,7 @@ class DimensionalAnalysis:
         dict
             dictionary of solutions for each dimensionless parameter
         """
+        import sympy
         solution_dict = dict()
         dimensionless_dict = self.dimensionless_parameters
         for d in dimensionless_dict:
