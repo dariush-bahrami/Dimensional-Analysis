@@ -1,3 +1,39 @@
+def raise_unit_2_power(unit_string, power):
+    """Raise unit string to power
+
+    Parameters
+    ----------
+    unit_string : str
+    power : float
+
+    Returns
+    -------
+    str
+    """
+    unit_list = unit_string.split()
+    new_unit_list = []
+    if power == 1:
+        return unit_string
+    for unit in unit_list:
+        if '^' in unit:
+            unit_part = unit.split('^')[0]
+            power_part = float(unit.split('^')[1])
+            power_part *= power
+
+            if power_part - int(power_part) == 0:
+                power_part = int(power_part)
+
+            new_unit_list.append('^'.join([unit_part, str(power_part)]))
+        else:
+            unit_part = unit
+            power_part = power
+            if power_part - int(power_part) == 0:
+                power_part = int(power_part)
+            new_unit_list.append('^'.join([unit_part, str(power_part)]))
+
+    return ' '.join(new_unit_list)
+
+
 def si_derived_unit_equivalent(unit_string: str) -> str:
     """Convert SI derived units to fundamental
     for example: 'N' (newton) wil became 'kg m s^-2'
@@ -31,15 +67,15 @@ def si_derived_unit_equivalent(unit_string: str) -> str:
 
     if '^' in unit_string:
         unit_part = unit_string.split('^')[0]
-        power_part = int(unit_string.split('^')[1])
+        power_part = float(unit_string.split('^')[1])
     else:
         unit_part = unit_string
         power_part = 1
 
     if unit_part in si_derived_units:
         unit_part = si_derived_units[unit_part]
-        unit_list = [unit_part for instance in range(power_part)]
-        return ' '.join(unit_list)
+        return raise_unit_2_power(unit_part, power_part)
+
     else:
         return unit_string
 
@@ -258,6 +294,8 @@ def standard_parameters(parameters_string: str) -> list:
     height = parameter('Height', 'm', 'h')
     diameter = parameter('Diameter', 'm', 'D')
     radius = parameter('Radius', 'm', 'r')
+    amplitude = parameter('Amplitude', 'm', 'A')
+    thickness = parameter('Thickness', 'm', 't')
 
     # 2D Length related parameters
     area = parameter('Area', 'm^2', 'A')
@@ -268,6 +306,8 @@ def standard_parameters(parameters_string: str) -> list:
     # Mechanic related parameters
     mass = parameter('Mass', 'kg', 'm')
     velocity = parameter('Velocity', 'm s^-1', 'v')
+    speed = parameter('Speed', 'm s^-1', 'v')
+    angular_velocity = parameter('Angular Velocity', 's^-1', '\omega')
     acceleration = parameter('Acceleration', 'm s^-2', 'a')
     g = parameter('g', 'm s^-2', 'g')
     force = parameter('Force', 'N', 'F')
@@ -278,6 +318,10 @@ def standard_parameters(parameters_string: str) -> list:
     work = parameter('Work', 'J', 'W')
     potential_energy = parameter('Potential Energy', 'J', 'PE')
     kinetic_energy = parameter('Kinetic Energy', 'J', 'KE')
+    tension = parameter('Tension', 'N', 's')
+    linear_density = parameter('Linear Density', 'kg m^-1', '\\rho')
+    stress = parameter('Stress', 'N m^-2', '\sigma')
+    power = parameter('Power', 'J s^-1', 'P')
 
     # Fluid mechanic parameters
     density = parameter('Density', 'kg m^-3', '\\rho')
@@ -304,11 +348,15 @@ def standard_parameters(parameters_string: str) -> list:
         'height': height,
         'diameter': diameter,
         'radius': radius,
+        'amplitude': amplitude,
+        'thickness': thickness,
         'area': area,
         'volume': volume,
         'mass': mass,
-        'velocity': parameter('Velocity', 'm s^-1', 'v'),
-        'acceleration': velocity,
+        'velocity': velocity,
+        'speed': speed,
+        'angular_velocity': angular_velocity,
+        'acceleration': acceleration,
         'g': g,
         'force': force,
         'momentum': momentum,
@@ -318,6 +366,10 @@ def standard_parameters(parameters_string: str) -> list:
         'work': work,
         'potential_energy': potential_energy,
         'kinetic_energy': kinetic_energy,
+        'tension': tension,
+        'linear_density': linear_density,
+        'stress': stress,
+        'power': power,
         'density': density,
         'viscosity': viscosity,
         'pressure': pressure,
@@ -371,7 +423,7 @@ def solve_from_standard_dimensional_analysis(parameters_string: str,
     -------
     dict
         dictionary of solutions for each dimensionless parameter
-    """                                             
+    """
     parameters = standard_parameters(parameters_string)
     target_parameter = standard_parameters(target_parameter_string)[0]
     return solve_from_dimensional_analysis(*parameters,
