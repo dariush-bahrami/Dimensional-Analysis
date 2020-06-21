@@ -25,9 +25,9 @@ dimensional_analysis(density, viscosity, velocity, diameter)
 
 
 
-
-$\displaystyle \left\{ \Pi_{0} : \frac{\rho D u}{\mu}\right\}$
-
+$$
+\displaystyle \left\{ \Pi_{0} : \frac{\rho D u}{\mu}\right\}
+$$
 
 
 
@@ -37,9 +37,9 @@ solve_from_dimensional_analysis(density, viscosity, velocity, diameter, target_p
 
 
 
-
-$\displaystyle \left\{ \Pi_{0} : \left[ \frac{\Pi_{0} \mu}{\rho D}\right]\right\}$
-
+$$
+\displaystyle \left\{ \Pi_{0} : \left[ \frac{\Pi_{0} \mu}{\rho D}\right]\right\}
+$$
 
 
 # Automated Standard Dimensional Analysis
@@ -53,9 +53,9 @@ standard_dimensional_analysis('kinetic_energy mass velocity')
 
 
 
-
-$\displaystyle \left\{ \Pi_{0} : \frac{\sqrt{m} v}{\sqrt{KE}}\right\}$
-
+$$
+\displaystyle \left\{ \Pi_{0} : \frac{\sqrt{m} v}{\sqrt{KE}}\right\}
+$$
 
 
 
@@ -65,9 +65,9 @@ solve_from_standard_dimensional_analysis('kinetic_energy mass velocity', 'mass')
 
 
 
-
-$\displaystyle \left\{ \Pi_{0} : \left[ \frac{\Pi_{0}^{2} KE}{v^{2}}\right]\right\}$
-
+$$
+\displaystyle \left\{ \Pi_{0} : \left[ \frac{\Pi_{0}^{2} KE}{v^{2}}\right]\right\}
+$$
 
 
 ## Fluid Flow
@@ -79,9 +79,9 @@ standard_dimensional_analysis('density viscosity velocity diameter')
 
 
 
-
-$\displaystyle \left\{ \Pi_{0} : \frac{\rho D v}{\mu}\right\}$
-
+$$
+\displaystyle \left\{ \Pi_{0} : \frac{\rho D v}{\mu}\right\}
+$$
 
 
 ## Pendulum
@@ -93,9 +93,9 @@ standard_dimensional_analysis('period g length')
 
 
 
-
-$\displaystyle \left\{ \Pi_{0} : \frac{L}{T^{2} g}\right\}$
-
+$$
+\displaystyle \left\{ \Pi_{0} : \frac{L}{T^{2} g}\right\}
+$$
 
 
 ## Fluid Static
@@ -107,9 +107,9 @@ standard_dimensional_analysis('pressure density g height')
 
 
 
-
-$\displaystyle \left\{ \Pi_{0} : \frac{\rho h g}{P}\right\}$
-
+$$
+\displaystyle \left\{ \Pi_{0} : \frac{\rho h g}{P}\right\}
+$$
 
 
 ## Wave Equation
@@ -121,9 +121,9 @@ standard_dimensional_analysis('wave_length velocity period')
 
 
 
-
-$\displaystyle \left\{ \Pi_{0} : \frac{T v}{\lambda}\right\}$
-
+$$
+\displaystyle \left\{ \Pi_{0} : \frac{T v}{\lambda}\right\}
+$$
 
 
 ## Magnetic Force
@@ -135,9 +135,9 @@ standard_dimensional_analysis('magnetic_field force electric_current length')
 
 
 
-
-$\displaystyle \left\{ \Pi_{0} : \frac{I L B}{F}\right\}$
-
+$$
+\displaystyle \left\{ \Pi_{0} : \frac{I L B}{F}\right\}
+$$
 
 
 
@@ -147,12 +147,6 @@ solve_from_standard_dimensional_analysis('magnetic_field force electric_current 
 
 
 
-
-$\displaystyle \left\{ \Pi_{0} : \left[ \frac{I L B}{\Pi_{0}}\right]\right\}$
-
-
-
-
-```python
-
-```
+$$
+\displaystyle \left\{ \Pi_{0} : \left[ \frac{I L B}{\Pi_{0}}\right]\right\}
+$$
