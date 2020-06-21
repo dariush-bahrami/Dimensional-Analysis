@@ -25,7 +25,9 @@ dimensional_analysis(density, viscosity, velocity, diameter)
 
 
 
-$`\displaystyle \left\{ \Pi_{0} : \frac{\rho D u}{\mu}\right\}`$
+```math
+\displaystyle \left\{ \Pi_{0} : \frac{\rho D u}{\mu}\right\}
+```
 
 
 
