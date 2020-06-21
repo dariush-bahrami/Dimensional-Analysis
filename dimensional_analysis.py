@@ -329,6 +329,8 @@ def standard_parameters(parameters_string: str) -> list:
     pressure = parameter('Pressure', 'Pa', 'P')
     temperature = parameter('Temperature', 'k', 'T')
     heat = parameter('Heat', 'J', 'Q')
+    flow_rate = parameter('Flow Rate', 'm^3 s^-1', 'Q')
+    specific_heat_capacity = parameter('Specific Heat Capacity', 'J kg^-1 k^-1', 'C_p')
 
     # Wave related parameters
     wave_length = parameter('Wave Length', 'm', '\lambda')
@@ -375,6 +377,8 @@ def standard_parameters(parameters_string: str) -> list:
         'pressure': pressure,
         'temperature': temperature,
         'heat': heat,
+        'flow_rate': flow_rate,
+        'specific_heat_capacity': specific_heat_capacity,
         'wave_length': wave_length,
         'electric_current': electric_current,
         'electric_voltage': electric_voltage,
